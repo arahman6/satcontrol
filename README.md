@@ -49,6 +49,8 @@ docker-compose up -d
 API Endpoints
 -------------
 
+A .http file located in **src/test/resources/satcontrol.http** for test purpose as an alternative of postman.
+
 ### Astronauts
 
 | Method | Endpoint | Description |
