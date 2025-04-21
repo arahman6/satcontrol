@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: satcontrol-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: cs483user
+      POSTGRES_PASSWORD: cs489pass
+      POSTGRES_DB: satcontrol
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
