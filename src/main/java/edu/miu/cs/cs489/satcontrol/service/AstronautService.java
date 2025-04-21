@@ -8,4 +8,6 @@ import java.util.List;
 public interface AstronautService {
     AstronautResponseDto createAstronaut(AstronautRequestDto dto);
     List<AstronautResponseDto> getAllAstronautsSorted(String sortBy);
+    AstronautResponseDto updateAstronaut(Long id, AstronautRequestDto dto);
+    void deleteAstronaut(Long id);
 }

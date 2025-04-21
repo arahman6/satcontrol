@@ -48,4 +48,31 @@ public class AstronautServiceImpl implements AstronautService {
         List<Astronaut> astronauts = astronautRepository.findAll(Sort.by(sortBy));
         return astronautMapper.toResponseDtoList(astronauts);
     }
+    @Override
+    public AstronautResponseDto updateAstronaut(Long id, AstronautRequestDto dto) {
+        Astronaut existing = astronautRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Astronaut not found with id: " + id));
+
+        List<Satellite> satellites = satelliteRepository.findAllById(dto.satelliteIds());
+        if (satellites.size() != dto.satelliteIds().size()) {
+            throw new IllegalArgumentException("One or more satellite IDs are invalid");
+        }
+
+        existing.setFirstName(dto.firstName());
+        existing.setLastName(dto.lastName());
+        existing.setExperienceYears(dto.experienceYears());
+        existing.setSatellites(new HashSet<>(satellites));
+
+        Astronaut updated = astronautRepository.save(existing);
+        return astronautMapper.toResponseDto(updated);
+    }
+
+    @Override
+    public void deleteAstronaut(Long id) {
+        if (!astronautRepository.existsById(id)) {
+            throw new IllegalArgumentException("Astronaut not found with id: " + id);
+        }
+        astronautRepository.deleteById(id);
+    }
+
 }

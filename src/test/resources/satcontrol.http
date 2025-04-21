@@ -1,0 +1,53 @@
+### Create a new Astronaut
+POST http://localhost:8080/api/v1/astronauts
+Content-Type: application/json
+
+{
+  "firstName": "Buzz",
+  "lastName": "Aldrin",
+  "experienceYears": 10,
+  "satelliteIds": [1, 2]
+}
+
+### Get all Astronauts (sorted by experienceYears)
+GET http://localhost:8080/api/v1/astronauts?sortBy=experienceYears
+
+### Update an existing Astronaut (change name and satellites)
+PUT http://localhost:8080/api/v1/astronauts/1
+Content-Type: application/json
+
+{
+  "firstName": "Buzz",
+  "lastName": "Aldrin Updated",
+  "experienceYears": 11,
+  "satelliteIds": [1]
+}
+
+### Delete an Astronaut
+DELETE http://localhost:8080/api/v1/astronauts/1
+
+
+### Get all Satellites
+GET http://localhost:8080/api/v1/satellites
+
+### Update a Satellite (only works if not decommissioned)
+PUT http://localhost:8080/api/v1/satellites/2
+Content-Type: application/json
+
+{
+  "name": "James Webb Space Telescope",
+  "launchDate": "2021-12-25",
+  "orbitType": "GEO",
+  "decommissioned": false
+}
+
+### Update a Satellite (Invalid ID - should trigger exception)
+PUT http://localhost:8080/api/v1/satellites/9999
+Content-Type: application/json
+
+{
+"name": "Nonexistent Satellite",
+"launchDate": "2022-01-01",
+"orbitType": "LEO",
+"decommissioned": false
+}
