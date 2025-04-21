@@ -19,7 +19,7 @@ public class AstronautController {
         this.astronautService = astronautService;
     }
 
-    // ✅ Create
+    // Create
     @PostMapping
     public ResponseEntity<AstronautResponseDto> createAstronaut(
             @Valid @RequestBody AstronautRequestDto astronautRequestDto) {
@@ -27,7 +27,7 @@ public class AstronautController {
         return ResponseEntity.status(201).body(saved);
     }
 
-    // ✅ Get all sorted
+    // Get all sorted
     @GetMapping
     public ResponseEntity<List<AstronautResponseDto>> getAllAstronauts(
             @RequestParam(defaultValue = "id") String sortBy) {
@@ -35,7 +35,7 @@ public class AstronautController {
         return ResponseEntity.ok(astronauts);
     }
 
-    // ✅ Update by ID
+    // Update by ID
     @PutMapping("/{id}")
     public ResponseEntity<AstronautResponseDto> updateAstronaut(
             @PathVariable Long id,
@@ -44,7 +44,7 @@ public class AstronautController {
         return ResponseEntity.ok(updated);
     }
 
-    // ✅ Delete
+    // Delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAstronaut(@PathVariable Long id) {
         astronautService.deleteAstronaut(id);

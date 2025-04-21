@@ -51,3 +51,15 @@ Content-Type: application/json
 "orbitType": "LEO",
 "decommissioned": false
 }
+
+
+### test case for the orbit type
+PUT http://localhost:8080/api/v1/satellites/1
+Content-Type: application/json
+
+{
+  "name": "Invalid Satellite",
+  "launchDate": "2022-01-01",
+  "orbitType": "geoo",
+  "decommissioned": false
+}
