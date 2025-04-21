@@ -37,7 +37,7 @@ edu.miu.cs.cs489.satcontrol
 
 ---
 
-## 🐳 Running with Docker
+## Running with Docker
 
 Start the PostgreSQL container:
 
